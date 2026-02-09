@@ -9,11 +9,5 @@
   "addOnOptions": {},
   "version": 1,
   "framework": "react-cra",
-  "chosenAddOns": [
-    "cloudflare",
-    "form",
-    "table",
-    "start",
-    "compiler"
-  ]
+  "chosenAddOns": ["cloudflare", "form", "table", "start", "compiler"]
 }
