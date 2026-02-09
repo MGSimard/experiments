@@ -17,7 +17,6 @@
     "@base-ui/react": "^1.1.0",
     "@cloudflare/vite-plugin": "^1.23.1",
     "@faker-js/faker": "^10.3.0",
-    "@fontsource-variable/geist": "^5.2.8",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/match-sorter-utils": "^8.19.4",
     "@tanstack/react-devtools": "^0.9.5",
