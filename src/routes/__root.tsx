@@ -2,7 +2,7 @@ import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { TooltipProvider } from "@/_components/shadcn-ui/tooltip";
-import { SidebarProvider, SidebarInset } from "@/_components/shadcn-ui/sidebar";
+import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/_components/shadcn-ui/sidebar";
 import { AppSidebar } from "@/_components/app-sidebar";
 import appCss from "@/_styles/global.css?url";
 
@@ -41,7 +41,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <TooltipProvider>
             <SidebarProvider>
               <AppSidebar />
-              <SidebarInset>{children}</SidebarInset>
+
+              <SidebarInset className="relative">
+                <SidebarTrigger className="absolute top-0 left-0 z-10" />
+                {children}
+              </SidebarInset>
             </SidebarProvider>
           </TooltipProvider>
         </div>

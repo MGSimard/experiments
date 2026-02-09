@@ -1,10 +1,6 @@
-import * as React from "react"
+import * as React from "react";
 
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/_components/shadcn-ui/collapsible"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/_components/shadcn-ui/collapsible";
 import {
   Sidebar,
   SidebarContent,
@@ -17,8 +13,8 @@ import {
   SidebarMenuItem,
   SidebarMenuSub,
   SidebarRail,
-} from "@/_components/shadcn-ui/sidebar"
-import { FileIcon, ChevronRightIcon, FolderIcon } from "lucide-react"
+} from "@/_components/shadcn-ui/sidebar";
+import { FileIcon, ChevronRightIcon, FolderIcon } from "lucide-react";
 
 // This is sample data.
 const data = {
@@ -37,22 +33,8 @@ const data = {
     },
   ],
   tree: [
-    [
-      "app",
-      [
-        "api",
-        ["hello", ["route.ts"]],
-        "page.tsx",
-        "layout.tsx",
-        ["blog", ["page.tsx"]],
-      ],
-    ],
-    [
-      "components",
-      ["ui", "button.tsx", "card.tsx"],
-      "header.tsx",
-      "footer.tsx",
-    ],
+    ["app", ["api", ["hello", ["route.ts"]], "page.tsx", "layout.tsx", ["blog", ["page.tsx"]]]],
+    ["components", ["ui", "button.tsx", "card.tsx"], "header.tsx", "footer.tsx"],
     ["lib", ["util.ts"]],
     ["public", "favicon.ico", "vercel.svg"],
     ".eslintrc.json",
@@ -62,7 +44,7 @@ const data = {
     "package.json",
     "README.md",
   ],
-}
+};
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
@@ -74,8 +56,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               {data.changes.map((item, index) => (
                 <SidebarMenuItem key={index}>
                   <SidebarMenuButton>
-                    <FileIcon
-                    />
+                    <FileIcon />
                     {item.file}
                   </SidebarMenuButton>
                   <SidebarMenuBadge>{item.state}</SidebarMenuBadge>
@@ -95,35 +76,29 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarRail />
+      {/* <SidebarRail /> */}
     </Sidebar>
-  )
+  );
 }
-type TreeItem = string | TreeItem[]
+type TreeItem = string | TreeItem[];
 function Tree({ item }: { item: TreeItem }) {
-  const [name, ...items] = Array.isArray(item) ? item : [item]
+  const [name, ...items] = Array.isArray(item) ? item : [item];
   if (!items.length) {
     return (
-      <SidebarMenuButton
-        isActive={name === "button.tsx"}
-        className="data-[active=true]:bg-transparent"
-      >
-        <FileIcon
-        />
+      <SidebarMenuButton isActive={name === "button.tsx"} className="data-[active=true]:bg-transparent">
+        <FileIcon />
         {name}
       </SidebarMenuButton>
-    )
+    );
   }
   return (
     <SidebarMenuItem>
       <Collapsible
         className="group/collapsible [&[data-state=open]>button>svg:first-child]:rotate-90"
-        defaultOpen={name === "components" || name === "ui"}
-      >
+        defaultOpen={name === "components" || name === "ui"}>
         <SidebarMenuButton render={<CollapsibleTrigger />}>
           <ChevronRightIcon className="transition-transform" />
-          <FolderIcon
-          />
+          <FolderIcon />
           {name}
         </SidebarMenuButton>
         <CollapsibleContent>
@@ -135,5 +110,5 @@ function Tree({ item }: { item: TreeItem }) {
         </CollapsibleContent>
       </Collapsible>
     </SidebarMenuItem>
-  )
+  );
 }
