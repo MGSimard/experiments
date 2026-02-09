@@ -2,6 +2,8 @@ import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { TooltipProvider } from "@/_components/shadcn-ui/tooltip";
+import { SidebarProvider, SidebarInset } from "@/_components/shadcn-ui/sidebar";
+import { AppSidebar } from "@/_components/app-sidebar";
 import appCss from "@/_styles/global.css?url";
 
 export const Route = createRootRoute({
@@ -35,9 +37,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <TooltipProvider>
-          <div id="root">{children}</div>
-        </TooltipProvider>
+        <div id="root">
+          <TooltipProvider>
+            <SidebarProvider>
+              <AppSidebar />
+              <SidebarInset>{children}</SidebarInset>
+            </SidebarProvider>
+          </TooltipProvider>
+        </div>
         <TanStackDevtools
           config={{
             position: "bottom-right",
