@@ -125,10 +125,6 @@ function RouteComponent() {
           <img src="/assets/r-exp/malorian.jpg" alt="Malorian Logo" />
           <img src="/assets/r-exp/mahir.jpg" alt="Mahir Logo" />
           <img src="/assets/r-exp/makigai.jpg" alt="Makigai Logo" />
-          <img src="" alt="" />
-          <img src="" alt="" />
-          <img src="" alt="" />
-          <img src="" alt="" />
         </div>
       </section>
       <section>
