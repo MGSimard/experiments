@@ -4,33 +4,12 @@ import { TanStackDevtools } from "@tanstack/react-devtools";
 import { TooltipProvider } from "@/_components/shadcn-ui/tooltip";
 import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/_components/shadcn-ui/sidebar";
 import { AppSidebar } from "@/_components/AppSidebar";
-import appCss from "@/_styles/global.css?url";
-import fontCss from "@/_styles/fonts.css?url";
+import { configMeta, openGraph, twitter, misc, configLinks, favIcons, fontPreloads, styles } from "@/_lib/head";
 
 export const Route = createRootRoute({
   head: () => ({
-    meta: [
-      {
-        charSet: "utf-8",
-      },
-      {
-        name: "viewport",
-        content: "width=device-width, initial-scale=1",
-      },
-      {
-        title: "TanStack Start Starter",
-      },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      {
-        rel: "stylesheet",
-        href: fontCss,
-      },
-    ],
+    meta: [...configMeta, ...openGraph, ...twitter, ...misc],
+    links: [...configLinks, ...favIcons, ...fontPreloads, ...styles],
   }),
   shellComponent: RootDocument,
 });
