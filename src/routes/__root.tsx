@@ -3,7 +3,7 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { TooltipProvider } from "@/_components/shadcn-ui/tooltip";
 import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/_components/shadcn-ui/sidebar";
-import { AppSidebar } from "@/_components/app-sidebar";
+import { AppSidebar } from "@/_components/AppSidebar";
 import appCss from "@/_styles/global.css?url";
 import fontCss from "@/_styles/fonts.css?url";
 

@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { PageTypeMD } from "@/_components/PageType-MD";
 import { Separator } from "@/_components/shadcn-ui/separator";
 
 export const Route = createFileRoute("/r-exp/logo-refs")({
@@ -7,7 +8,7 @@ export const Route = createFileRoute("/r-exp/logo-refs")({
 
 function RouteComponent() {
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col gap-4 px-4 py-12">
+    <PageTypeMD>
       <h1 className="text-2xl font-bold uppercase">R REFERENCES</h1>
       <section>
         <h2 className="text-lg font-bold">DOWNLOAD</h2>
@@ -141,6 +142,6 @@ function RouteComponent() {
           <div>Item</div>
         </div>
       </section>
-    </div>
+    </PageTypeMD>
   );
 }

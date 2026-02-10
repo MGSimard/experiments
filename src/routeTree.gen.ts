@@ -9,9 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ReadmeRouteImport } from './routes/readme'
+import { Route as NotesRouteImport } from './routes/notes'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as RExpLogoRefsRouteImport } from './routes/r-exp/logo-refs'
 
+const ReadmeRoute = ReadmeRouteImport.update({
+  id: '/readme',
+  path: '/readme',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotesRoute = NotesRouteImport.update({
+  id: '/notes',
+  path: '/notes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -25,32 +37,54 @@ const RExpLogoRefsRoute = RExpLogoRefsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/notes': typeof NotesRoute
+  '/readme': typeof ReadmeRoute
   '/r-exp/logo-refs': typeof RExpLogoRefsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/notes': typeof NotesRoute
+  '/readme': typeof ReadmeRoute
   '/r-exp/logo-refs': typeof RExpLogoRefsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/notes': typeof NotesRoute
+  '/readme': typeof ReadmeRoute
   '/r-exp/logo-refs': typeof RExpLogoRefsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/r-exp/logo-refs'
+  fullPaths: '/' | '/notes' | '/readme' | '/r-exp/logo-refs'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/r-exp/logo-refs'
-  id: '__root__' | '/' | '/r-exp/logo-refs'
+  to: '/' | '/notes' | '/readme' | '/r-exp/logo-refs'
+  id: '__root__' | '/' | '/notes' | '/readme' | '/r-exp/logo-refs'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  NotesRoute: typeof NotesRoute
+  ReadmeRoute: typeof ReadmeRoute
   RExpLogoRefsRoute: typeof RExpLogoRefsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/readme': {
+      id: '/readme'
+      path: '/readme'
+      fullPath: '/readme'
+      preLoaderRoute: typeof ReadmeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes': {
+      id: '/notes'
+      path: '/notes'
+      fullPath: '/notes'
+      preLoaderRoute: typeof NotesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -70,6 +104,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  NotesRoute: NotesRoute,
+  ReadmeRoute: ReadmeRoute,
   RExpLogoRefsRoute: RExpLogoRefsRoute,
 }
 export const routeTree = rootRouteImport
