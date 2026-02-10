@@ -169,7 +169,9 @@
     display: block;
     max-width: 100%;
   }
-  button:not(:disabled) {
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  [role="switch"]:not(:disabled) {
     cursor: pointer;
   }
 }

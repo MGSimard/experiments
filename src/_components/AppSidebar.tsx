@@ -1,8 +1,9 @@
 import * as React from "react";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/_components/shadcn-ui/collapsible";
+import { Link, useMatchRoute } from "@tanstack/react-router";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -13,7 +14,8 @@ import {
   SidebarMenuSub,
   useSidebar,
 } from "@/_components/shadcn-ui/sidebar";
-import { Link, useMatchRoute } from "@tanstack/react-router";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/_components/shadcn-ui/collapsible";
+import { ThemeSwitch } from "@/_components/ThemeSwitch";
 import { FileIcon, ChevronRightIcon, FolderIcon, SquareDashedBottomCodeIcon } from "lucide-react";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -26,7 +28,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuButton
               render={<Link to="/" activeProps={{ "data-active": true }} onClick={() => setOpenMobile(false)} />}>
               <SquareDashedBottomCodeIcon />
-              MGS Exps
+              MGS Experiments
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -61,6 +63,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <ThemeSwitch className="ml-auto" />
+      </SidebarFooter>
     </Sidebar>
   );
 }
